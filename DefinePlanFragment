@@ -1,0 +1,121 @@
+package com.preach.mentaldisorder.Views.fragments
+
+import com.preach.mentaldisorder.R
+import com.preach.mentaldisorder.Utils.Application.gone
+import com.preach.mentaldisorder.Utils.Application.visible
+import kotlinx.android.synthetic.main.fragment_define_plan.*
+import java.text.SimpleDateFormat
+import java.util.*
+
+class DefinePlanFragment : BaseFragment(R.layout.fragment_define_plan) {
+    var count = 0
+    override fun initViews() {
+        ivBack.setOnClickListener {
+            onBackPress()
+        }
+        handleFajarSelction()
+        handleZuharSelction()
+        handleAsarSelction()
+        handleMaghribSelction()
+        handleIshaSelction()
+        tvAllProgress.setOnClickListener{
+            navigateToFragment(R.id.action_definePlanFragment_to_goalResultFragment)
+        }
+        tvCurrentDate.text = getCurrentDate()
+    }
+
+    fun getCurrentDate(): String {
+        val simpleDateFormat = SimpleDateFormat("dd MMM, yyyy")
+        val currentDateAndTime: String = simpleDateFormat.format(Date())
+        return currentDateAndTime
+    }
+    private fun handleFajarSelction() {
+        cbFajar.setOnCheckedChangeListener { compoundButton, isCheckeed ->
+            if(isCheckeed){
+                count += 1
+                tvPrayerCount.text = count.toString()
+                tvFajar.gone()
+                ivClickTrueFajar.visible()
+                rlFajar.setBackgroundResource(R.drawable.ic_checkbox_color_edon)
+            }else{
+                count -= 1
+                tvPrayerCount.text = count.toString()
+                tvFajar.visible()
+                ivClickTrueFajar.gone()
+                rlFajar.setBackgroundResource(R.drawable.ic_checkbox_color_gray)
+            }
+        }
+    }
+    private fun handleZuharSelction() {
+        cbZuhar.setOnCheckedChangeListener { compoundButton, isCheckeed ->
+            if(isCheckeed){
+                count += 1
+                tvPrayerCount.text = count.toString()
+                tvZuhar.gone()
+                ivClickTrueZuhar.visible()
+                rlZuhar.setBackgroundResource(R.drawable.ic_checkbox_color_edon)
+            }else{
+                count -= 1
+                tvPrayerCount.text = count.toString()
+                tvZuhar.visible()
+                ivClickTrueZuhar.gone()
+                rlZuhar.setBackgroundResource(R.drawable.ic_checkbox_color_gray)
+            }
+        }
+    }
+    private fun handleAsarSelction() {
+        cbAsar.setOnCheckedChangeListener { compoundButton, isCheckeed ->
+            if(isCheckeed){
+                count += 1
+                tvPrayerCount.text = count.toString()
+                tvAsar.gone()
+                ivClickTrueAsar.visible()
+                rlAsar.setBackgroundResource(R.drawable.ic_checkbox_color_edon)
+            }else{
+                count -= 1
+                tvPrayerCount.text = count.toString()
+                tvAsar.visible()
+                ivClickTrueAsar.gone()
+                rlAsar.setBackgroundResource(R.drawable.ic_checkbox_color_gray)
+            }
+        }
+    }
+    private fun handleMaghribSelction() {
+        cbMaghrib.setOnCheckedChangeListener { compoundButton, isCheckeed ->
+            if(isCheckeed){
+                count += 1
+                tvPrayerCount.text = count.toString()
+                tvMaghrib.gone()
+                ivClickTrueMaghrib.visible()
+                rlMaghrib.setBackgroundResource(R.drawable.ic_checkbox_color_edon)
+            }else{
+                count -= 1
+                tvPrayerCount.text = count.toString()
+                tvMaghrib.visible()
+                ivClickTrueMaghrib.gone()
+                rlMaghrib.setBackgroundResource(R.drawable.ic_checkbox_color_gray)
+            }
+        }
+    }
+  private fun handleIshaSelction() {
+        cbIsha.setOnCheckedChangeListener { compoundButton, isCheckeed ->
+            if(isCheckeed){
+                count += 1
+                tvPrayerCount.text = count.toString()
+                tvIsha.gone()
+                ivClickTrueIsha.visible()
+                rlIsha.setBackgroundResource(R.drawable.ic_checkbox_color_edon)
+            }else{
+                count -= 1
+                tvPrayerCount.text = count.toString()
+                tvIsha.visible()
+                ivClickTrueIsha.gone()
+                rlIsha.setBackgroundResource(R.drawable.ic_checkbox_color_gray)
+            }
+        }
+    }
+
+    override fun attachViewModel() {
+
+    }
+}
